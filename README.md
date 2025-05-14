@@ -43,6 +43,7 @@ This crew is ideal for:
 A clean CSV file or QuickBooks-compatible report like:
 
 Date,Vendor,Item Description,Category,Amount,Currency,Audit_Flag
+
 2025-05-01,Adobe Inc.,Photoshop Subscription,Software,29.99,USD,
 2025-05-02,Staples,Office Chairs,Office Supplies,189.00,USD,
 2025-05-03,Uber Eats,Team Lunch,Meals,120.00,USD,PolicyLimitExceeded
