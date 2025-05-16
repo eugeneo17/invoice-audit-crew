@@ -1,0 +1,58 @@
+extract_invoice_data_task:
+  agent: extractor
+  description: |
+    Use the "Extract Invoice Text Tool" to extract all invoice text from the file at {invoice_path}.
+    Parse the resulting content to extract:
+      - Invoice date
+      - Vendor name
+      - Line items (description, amount, currency)
+
+  expected_output: |
+    A structured table with the following columns:
+      - Date
+      - Vendor
+      - Item description
+      - Amount
+      - Currency
+
+categorize_line_items_task:
+  agent: categorizer
+  description: Categorize the line items from the invoice into predefined expense categories.
+  expected_output: Line items with attached categories like Office Supplies, Meals, Software, etc.
+
+audit_invoice_task:
+  agent: validator
+  description: |
+    Carefully analyze the extracted invoice data and perform a set of automated checks to detect common billing and compliance errors.
+    Your goal is to return a list of audit flags for each issue found, or confirm that the invoice is clean.
+
+    Use the following criteria to audit the invoice:
+      1. Incorrect Tax Rate
+      2. Mismatched Totals
+      3. Duplicate Invoice
+      4. Wrong Currency
+      5. Missing or Invalid Invoice Number
+      6. Invalid Vendor Info
+      7. Incorrect or Missing Date
+      8. Inconsistent Tax Application
+      9. Unusual Unit Price
+      10. Mismatch with Purchase Order
+  expected_output: |
+    Return a JSON object with:
+    - "is_clean": true/false
+    - "issues": a list of flags or messages explaining any audit problems detected
+    - "severity": optional warning levels (info/warning/error) for each issue
+
+generate_summary_task:
+  agent: summarizer
+  description: |
+    Generate two output files:
+    1. A CSV summary of all categorized invoices and audit flags.
+    2. A PDF report detailing each invoice's audit results (including filename, errors, and warnings).
+
+    Include headers for clarity, and ensure the audit flags are attached to the relevant invoice lines.
+    Then use the "Save Report Tool" to save them into the output folder.
+
+  expected_output: |
+    - "invoice_summary.csv": Contains categorized line items with any detected audit issues.
+    - "audit_report.pdf": A readable report with one section per invoice summarizing all audit findings and warnings.

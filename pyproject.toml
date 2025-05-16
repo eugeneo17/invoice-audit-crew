@@ -1,0 +1,30 @@
+[project]
+name = "invoice_audit_crew"
+version = "0.1.0"
+description = "Invoice Audit Crew using CrewAI"
+authors = [
+    { name = "Eugene Olkhovski", email = "eugeneo@cloudgeometry.com" },
+]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.108.0,<1.0.0",
+    "openai>=1.25.1",
+    "pytesseract",
+    "pdf2image",
+    "pillow",
+    "pydantic",
+    "crewai-tools",
+]
+
+[project.scripts]
+invoice_audit_crew = "invoice_audit_crew.main:run"
+run_crew = "invoice_audit_crew.main:run"
+train = "invoice_audit_crew.main:train"
+replay = "invoice_audit_crew.main:replay"
+test = "invoice_audit_crew.main:test"
+
+[build-system]
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"

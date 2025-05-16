@@ -1,0 +1,8 @@
+crewai[tools]>=0.108.0,<1.0.0
+crewai-tools
+openai>=1.25.1
+pytesseract
+pdf2image
+pillow
+pydantic
+pyyaml
