@@ -1,5 +1,4 @@
-crewai[tools]>=0.108.0,<1.0.0
-crewai-tools
+crewai[tools]>=0.10.8,<1.0.0
 openai>=1.25.1
 pytesseract
 pdf2image
