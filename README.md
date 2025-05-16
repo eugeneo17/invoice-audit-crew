@@ -52,8 +52,8 @@ InvoiceAuditCrew is an AI-powered crew that automates the extraction, categoriza
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/your-org/InvoiceAuditCrew.git
-   cd InvoiceAuditCrew
+   git clone https://github.com/your-org/invoice_audit_crew.git
+   cd invoice_audit_crew
    ```
 
 2. **Create a virtual environment**
